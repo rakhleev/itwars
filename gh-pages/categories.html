@@ -1,0 +1,44 @@
+---
+layout: page
+permalink: /categories/
+title: Все посты
+---
+<div id="archives">
+    {% for category in site.categories %}
+      <div class="archive-group">
+        {% capture category_name %}{{ category | first }}{% endcapture %}
+        <div id="#{{ category_name | slugize }}"></div>
+        <p></p>
+    
+        <h3 class="category-head">{{ category_name }}</h3>
+        <a name="{{ category_name | slugize }}"></a>
+        {% for post in site.categories[category_name] %}
+        <article class="archive-item">
+          <h4><a href="{{ site.baseurl }}{{ post.url }}">{{post.title}}</a></h4>
+        </article>
+        {% endfor %}
+      </div>
+    {% endfor %}
+    </div>
+
+<style>h1.post-title {
+  color: #000;
+  text-decoration: none;
+  transition: color .3s ease-out;
+  width: 100%;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 7px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: inline-block;
+  border-top-left-radius: 9%;
+  border-bottom-right-radius: 15%;
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-style: italic;
+  padding: 7px 7px;
+  text-decoration: none;
+  margin-bottom: 0.5em;
+}</style>
