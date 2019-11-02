@@ -4,7 +4,7 @@ email:
 description:
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://itwars.me" # the base hostname & protocol for your site
-copyright: <p class="copy-left">&copy;</p> 2019 itwars.me
+copyright: <p class="copy-left">&copy;</p> 2019 <a href="https://itwars.me/">itwars.me</a>
 permalink: /:categories/:title/
 permalink: pretty
 
