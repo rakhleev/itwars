@@ -18,7 +18,9 @@ title: Игры
     $( "#tabs" ).tabs();
   } );
   </script>
-  <style>  #tabs {
+  <style>  
+ 
+  #tabs {
     min-width: 418px;
 }
 /* Layout helpers
@@ -854,7 +856,8 @@ button.ui-button::-moz-focus-inner {
 .ui-tabs .ui-tabs-nav {
 	margin: 0;
     padding: .2em .2em 0;
-    background:#cccccc00;
+	background:#cccccc00;
+	border: 0px;
 }
 .ui-tabs .ui-tabs-nav li {
 	list-style: none;
@@ -915,11 +918,11 @@ body .ui-tooltip {
 	font-size: 1em;
 }
 .ui-widget.ui-widget-content {
-	border: 1px solid #c5c5c5;
+	border: 0px solid #c5c5c5;
 }
 .ui-widget-content {
 	border: 0px solid #dddddd;
-	background: #ffffff00;
+	background: #ffffff25;
 	color: #333333;
 }
 .ui-widget-content a {
@@ -1330,7 +1333,7 @@ a.ui-button:active,
 #ui-id-1, #ui-id-2 {
     background-color: #5095EA;
     color: white;
-    border: 0.3em inset rgba(170, 0, 23, 0.418);
+    border: 0em inset rgba(170, 0, 23, 0.418);
     width: 9em;
 
     text-align: center;
@@ -1346,7 +1349,8 @@ a.ui-button:active,
     
 }
 .ui-tabs .ui-tabs-nav li {
-    background: transparent;
+	background: transparent;
+	border: 0px;
 }
 </style>
 </head>

@@ -1,7 +1,8 @@
 ---
 layout: page
-permalink: /instruments/
-title: Инструменты
+permalink: /seo-tools/
+title: Инструменты для SEO и PPC
+description: Набор утилит для работы с большими списками слов - удаление дублей, спинтакс, автоматическая кластеризация, фильтрация.
 ---
 
 <!DOCTYPE html>
@@ -514,16 +515,16 @@ div#groups li.list-group-item {
 
 <div id="Filter" class="tabcontent">
   <h3>Фильтратор</h3>
-  <p>Who we are and what we do.</p>
+  <p>Фильтрация ключевых слов.</p>
 
   <!DOCTYPE html>
   <html lang="en">
   
-  <!-- Mirrored from marketbold.com/KeywordFilterPro/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 20 Oct 2019 00:31:47 GMT -->
+
   <head>
       <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
       <link rel="stylesheet" href="{{ site.baseurl }}/css/bootstrap.min.css" />
-      <link rel="stylesheet" href="{{ site.baseurl }}/css/style.css" />
+
   
       <meta name="description" content="Keyword Filter Pro will filter a large list of keywords and help you target just the best keywords that represent buyers.">
     </head>
@@ -535,22 +536,22 @@ div#groups li.list-group-item {
                       <div class="row">
                           <div class="col-md-6">
                               <label>
-                                  Positive Match
+                                  Плюс слова
                                       <a href="#" title="">
                                           <i class="fa fa-question-circle-o" aria-hidden="true"></i>
                                           <!-- TOOLTIP --->
-                                          <span class="tooltip" style=""><strong>keyword</strong> = Broad Match<br /><strong>"keyword"</strong> = Phrase Match<br /><strong>[keyword]</strong> = Exact Match</span>
+                                          <span class="tooltip" style=""><strong></strong><br /><strong>"ключ"</strong> = широкое соответствие <br /><strong>[ключ]</strong> = точное соответствие</span>
                                       </a>
                                  
                                   <textarea class="form-control live-keys" rows="10" id="keysToMatch"></textarea>
                               </label>
 
                               <label>
-                                  Negative Match
+                                  Минус слова
                                       <a href="#" title="">
                                           <i class="fa fa-question-circle-o" aria-hidden="true"></i>
                                           <!-- TOOLTIP --->
-                                          <span class="tooltip" style=""><strong>keyword</strong> = Negative Broad Match<br /><strong>"keyword"</strong> = Negative Phrase Match<br /><strong>[keyword]</strong> = Negative Exact Match</span>
+                                          <span class="tooltip" style=""><strong></strong> <br /><strong>"ключ"</strong> = широкое соответствие <br /><strong>[ключ]</strong> = точное соответствие</span>
                                       </a>
                                   
                                   <textarea class="form-control live-keys" rows="10" id="keysToFilterMatch"></textarea>
@@ -560,26 +561,27 @@ div#groups li.list-group-item {
                           <div class="clearfix"></div>
                       </div>
                       <label>
-                          <span>Keyword List
+                          <span>Список ключевых слов
                               <a href="#" title="">
                                   <i class="fa fa-question-circle-o" aria-hidden="true"></i>
                                   <!-- TOOLTIP --->
-                                  <span class="tooltip" style="">This is where you paste your entire list of keywords that you want to filter.</span>
+                                  <br>
+                                  <span class="tooltip" style="">Скопируйте и вставьте список слов для фильтрации в окно ниже.</span>
                               </a>
                           </span>
                           <textarea class="form-control live-keys" rows="20" id="keysToBeMatched"></textarea>
-                          <div class="pull-right" id="keysToBeMatchedCount"><span>0</span> keywords</div>
+                          <div class="pull-right" id="keysToBeMatchedCount"><span>0</span> ключевых слов</div>
                       </label>
                     </div>
                   </div>
                   <div class="col-md-6" id="resultsContainer">
                       <label>
                           <textarea class="form-control" rows="15" id="matchResult"></textarea>
-                          <span class="pull-right"><span>0</span> keywords match</span>
+                          <span class="pull-right"><span>0</span> + </span>
                       </label>
                       <label>
                           <textarea class="form-control" rows="15" id="dontMatchResult"></textarea>
-                          <span class="pull-right"><span>0</span> keywords don't match</span>
+                          <span class="pull-right"><span>0</span> -</span>
                       </label>
                   </div>
                   <div class="clearfix"></div>
@@ -617,6 +619,9 @@ div#groups li.list-group-item {
   </html>
 
 <style>
+        .tool-button{
+            background: #a5459d;
+        }
     textarea#keysToMatch.form-control.live-keys {
         height: auto;
     background-color: #424242;

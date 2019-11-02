@@ -336,7 +336,7 @@ button {
   margin: 0em;
   font: 400 13.3333px Arial;
   padding: 1px 6px;
-  border-width: 2px;
+  border-width: 0px;
   border-style: outset;
   border-color: buttonface;
   border-image: initial;
@@ -397,9 +397,9 @@ textarea.form-control {
   margin-bottom: 1.3em;
 }
 .button2 {
-  background-color: #5095EA; 
+  background-color: rgba(80, 149, 234, 0.363);
   color: white; 
-  border: 0.3em inset rgba(170, 0, 23, 0.418);
+  border: 0.3em inset rgba(170, 0, 23, 0);
   width: 9em;
 }
 
@@ -408,7 +408,7 @@ textarea.form-control {
   transition: all 0.2s;
   background-color: #A5459D;
   color: white;
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 
 .button#flip {
@@ -440,7 +440,6 @@ div.tagcloud {
   margin-bottom: 5em;
 }
 
-
-  #tabs {
-      min-width: 418px;
-  }
+.post-block .post-card__fade {
+  visibility: hidden;
+}
