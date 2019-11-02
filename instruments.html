@@ -169,19 +169,16 @@ input {
                 <input id="remove-empty" type="checkbox">
                 <span class="checkmark"></span></label><label class="check-container">Регистрозависимость
                 <input id="case-sensitive" type="checkbox">
-                <span class="checkmark"></span></label><textarea id="duplicate-textarea" rows="30" wrap="off">This tool will allow you to quickly remove duplicate lines of text.
+                <span class="checkmark"></span></label><textarea id="duplicate-textarea" rows="30" wrap="off">
+        Этот инструмент позволит вам быстро удалить дубликаты.
               
-              Simply paste your text in this window and select the "Remove Duplicate Lines" button above.
+        Скопируйте ваш текст сюда и нажмите "Удалить дубли".
               
-              By default, the check is not case sensitive. Please click the "Case Sensitive" checkbox if you would like to enable this.
-              You can also check the "Remove Empty Lines" to remove any empty lines in between your text data.
-              
-              Quick Example:
-              Select the "Remove Duplicate Lines" button and these three identical lines will be trimmed to one.
-              Select the "Remove Duplicate Lines" button and these three identical lines will be trimmed to one.
-              Select the "Remove Duplicate Lines" button and these three identical lines will be trimmed to one.
-              
-              No data is sent to our server, what you generate here is secure.
+        Пример:
+        Нажмите "Удалить дубли" для удаления идентичных строк
+        Нажмите "Удалить дубли" для удаления идентичных строк
+        Нажмите "Удалить дубли" для удаления идентичных строк
+        Нажмите "Удалить дубли" для удаления идентичных строк
                   </textarea>
               <button id="load-text" class="tool-button" type="button">Загрузить *.txt</button>
               <input id="load-file" type="file" style="display:none">
@@ -197,14 +194,14 @@ input {
   <p>{Генератор|Скрипт} для {создания|написания} {уникальных|новых} {комментариев|описаний}</p> 
   <form class="spinner">
         <label>Ввод</label>
-        <textarea id="spintax_input" placeholder="{What is|What's} the deal with {airline food|the food they give you on airplanes}{?|?!}"></textarea><label>Вывод</label>
-        <textarea id="spintax_output" placeholder="What is the deal with the food they give you on airplanes?" disabled></textarea><button type="button" onclick="spin_form();">Запустить</button>
+        <textarea id="spintax_input" placeholder="{Генератор|Скрипт} для {создания|написания} {уникальных|новых} {комментариев|описаний}{?|?!}"></textarea><label>Вывод</label>
+        <textarea id="spintax_output" placeholder="Скрипт для создания уникальных комментариев" disabled></textarea><button type="button" onclick="spin_form();">Запустить</button>
     </form>
 </div>
 
 <div id="Grouper" class="tabcontent">
     <h3>Группировка ключевых слов</h3>
-        <p>Get in touch, or swing by for a cup of coffee.</p>
+        <p>Кластеризация ключевых слов</p>
         <div class="wrapper">
             <div class="col-md-12 center">
                 <form id="processForm">
@@ -214,7 +211,7 @@ input {
                         <div class="clearfix"></div>
             </div>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control" id="maxLength" name="max" placeholder="Minimum group length" />
+                        <input type="text" class="form-control" id="maxLength" name="max" placeholder="Минимальное количество совпадений для создания группы (от 1 до 99)" />
                         <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#ExcludeModal">
                             Стоп слова
                         </button>
@@ -263,15 +260,15 @@ input {
                         <div class="tab-content">
                             <div id="menu1" class="tab-pane fade in active">
                                 <p class="alert alert-success text-center" id="processed">
-                                    <span class="success-process-keywords"><b>0</b> keywords analyzed</span>
-                                    <span id="success-process-groups"><b>0</b> Groups created</span>
+                                    <span class="success-process-keywords"><b>0</b> ключевых слов проанализировано</span>
+                                    <span id="success-process-groups"><b>0</b> групп создано</span>
                                 </p>
                                 <ul class="list-group"></ul>
                             </div>
                             <div id="menu2" class="tab-pane fade">
                                 <p class="alert alert-success text-center" id="processedLess">
-                                    <span class="success-process-keywords"><b>0</b> keywords analyzed</span>
-                                    <span id="success-process-groupsL"><b>0</b> Groups created</span>
+                                    <span class="success-process-keywords"><b>0</b> kключевых слов проанализировано</span>
+                                    <span id="success-process-groupsL"><b>0</b> групп создано</span>
                                 </p>
                                 <ul class="list-group"></ul>
                             </div>
@@ -846,7 +843,7 @@ saveFile.addEventListener("click", function () {
 </script>        
 
 {% include back-button.html %}
-
+{% include footer.html %}
 
 
 
