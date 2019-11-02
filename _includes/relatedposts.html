@@ -1,0 +1,41 @@
+<div class="relatedPosts">
+<hr>
+        <h4 style="text-align: left; padding-right: 4.5em;"">Похожие посты</h4>
+        <div class="mdl-grid">
+        {% assign maxRelated = 4 %}
+        {% assign minCommonTags =  2 %}
+        {% assign maxRelatedCounter = 0 %}
+        
+        {% for post in site.posts %}
+        
+            {% assign sameTagCount = 0 %}
+            {% assign commonTags = '' %}
+        
+            {% for category in post.categories %}
+              {% if post.url != page.url %}
+                {% if page.categories contains category %}
+                  {% assign sameTagCount = sameTagCount | plus: 1 %}
+                  {% capture tagmarkup %} <span class="label label-default">{{ category }}</span> {% endcapture %}
+                  {% assign commonTags = commonTags | append: tagmarkup %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+        
+            {% if sameTagCount >= minCommonTags %}
+              <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-phone post-block">
+                    <div>
+                            <a href="{{ post.url | prepend: site.baseurl }}">
+                                    <div class="post-card mdl-shadow--2dp">
+              <h6 style="text-align:center;"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}{{ commonTags }}</a></h6>
+              <div class="mdl-card__supporting-text">
+                    {{ post.description }}
+                </div></div></div></div>
+              {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
+              {% if maxRelatedCounter >= maxRelated %}
+                {% break %}
+              {% endif %}
+            {% endif %}
+        
+          {% endfor %}
+        </div>
+        </div>

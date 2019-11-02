@@ -1,0 +1,858 @@
+---
+layout: page
+permalink: /instruments/
+title: Инструменты
+---
+
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=320, initial-scale=0.8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW, NOARCHIVE">
+
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Bootstrap -->
+    <link href="{{ site.baseurl }}/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+
+<style>
+
+.mdl-layout__title, .mdl-layout-title {
+    display: inline-block;
+    position: relative;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-size: 16px;
+    line-height: 1;
+    letter-spacing: .02em;
+    font-weight: 400;
+    box-sizing: border-box;
+}
+
+* {box-sizing: border-box}
+
+/* Set height of body and the document to 100% */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+}
+
+/* Style tab links */
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+element.style {
+    background-color: #ED9C95;
+}
+
+
+
+.tablink:hover {
+  background-color: #777;
+  color:white;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+}
+
+label {
+    transition: color .3s ease-out;
+    width: 30%;
+    text-align: left;
+    display: inline-block;
+    border-top-left-radius: 9%;
+    border-bottom-right-radius: 15%;
+    color: white;
+    font-family: Helvetica, Arial, sans-serif;
+    font-style: italic;
+    padding: 5px 5px;
+    text-decoration: none;
+    margin-bottom: 0.5em;
+}
+
+#Dedup {background-color: #1CAAF2;}
+#Spintax {background-color: rgb(15, 125, 180);}
+#Grouper {background-color: rgb(7, 88, 129);}
+#Filter {background-color: rgb(5, 80, 117);}
+
+button.btn.btn-default.js-exclude-btn {
+width: 98px;
+}
+div.modal-content {
+    display:inline-block;
+    text-align:center;
+    float: middle;
+    background-color:rgb(15, 125, 180);
+    width: 49%;
+    margin-left: 25%;
+}
+button.close {
+    float: right;
+}
+button.btn.btn-info.btn-block{
+    width:30%;
+    display:inline-block;
+    float: left;
+}
+button.btn.btn-info.btn-block.js-process-btn{
+float: right;
+height: 30%;
+width: 30%;
+}
+
+
+h4.modal-title {
+    text-align: center;
+}
+textarea#excluded.form-control {
+    text-align: center;
+    width: 80%;
+    height: 45%;
+}
+textarea#results.form-control.text-to-copy {
+    width: 100%;
+}
+input#maxLength.form-control {
+    width: 30em;    
+}
+input {
+    text-align: center;
+}
+.mdl-mini-footer--left-section, .mdl-mini-footer__left-section
+{display: none;}
+</style>
+
+<html>
+<body>
+
+<button class="tablink" id="dedup" onclick="openPage('Dedup', this, '#29ABF0')">Дедупликатор</button>
+<button class="tablink" id="spin" onclick="openPage('Spintax', this, '#1A7EB2')" id="defaultOpen">Спинтакс</button>
+<button class="tablink" onclick="openPage('Grouper', this, '#0F5880')">Кластеризатор</button>
+<button class="tablink" onclick="openPage('Filter', this, '#0C5074')">Фильтратор</button>
+
+<div id="Dedup" class="tabcontent">
+  <h3>Дедупликатор</h3>
+  <p>Удаление дублей</p>
+
+    <html>
+          <main id="main-content"><article id="main-article">
+              <div id="dup-tool-container">
+                <button id="remove-duplicates" class="tool-button" type="button">Удалить дубли</button>
+                <button id="select-all" class="tool-button" type="button">Выделить все</button>
+                <button id="clear-all" class="tool-button" type="button">Очистить</button>
+                <label class="check-container">Удалить пустые строки
+                <input id="remove-empty" type="checkbox">
+                <span class="checkmark"></span></label><label class="check-container">Регистрозависимость
+                <input id="case-sensitive" type="checkbox">
+                <span class="checkmark"></span></label><textarea id="duplicate-textarea" rows="30" wrap="off">This tool will allow you to quickly remove duplicate lines of text.
+              
+              Simply paste your text in this window and select the "Remove Duplicate Lines" button above.
+              
+              By default, the check is not case sensitive. Please click the "Case Sensitive" checkbox if you would like to enable this.
+              You can also check the "Remove Empty Lines" to remove any empty lines in between your text data.
+              
+              Quick Example:
+              Select the "Remove Duplicate Lines" button and these three identical lines will be trimmed to one.
+              Select the "Remove Duplicate Lines" button and these three identical lines will be trimmed to one.
+              Select the "Remove Duplicate Lines" button and these three identical lines will be trimmed to one.
+              
+              No data is sent to our server, what you generate here is secure.
+                  </textarea>
+              <button id="load-text" class="tool-button" type="button">Загрузить *.txt</button>
+              <input id="load-file" type="file" style="display:none">
+              <button id="save-file" class="tool-button" type="button">Сохранить</button>
+              <input id="save-filename" size="20" type="text" placeholder="Имя файла"><p id="total-removed"></p></div></article></main>
+    </html>
+
+
+</div>
+
+<div id="Spintax" class="tabcontent">
+  <h3>Спинтакс</h3>
+  <p>{Генератор|Скрипт} для {создания|написания} {уникальных|новых} {комментариев|описаний}</p> 
+  <form class="spinner">
+        <label>Ввод</label>
+        <textarea id="spintax_input" placeholder="{What is|What's} the deal with {airline food|the food they give you on airplanes}{?|?!}"></textarea><label>Вывод</label>
+        <textarea id="spintax_output" placeholder="What is the deal with the food they give you on airplanes?" disabled></textarea><button type="button" onclick="spin_form();">Запустить</button>
+    </form>
+</div>
+
+<div id="Grouper" class="tabcontent">
+    <h3>Группировка ключевых слов</h3>
+        <p>Get in touch, or swing by for a cup of coffee.</p>
+        <div class="wrapper">
+            <div class="col-md-12 center">
+                <form id="processForm">
+                    <div class="col-sm-9">
+                        <textarea class="form-control text-to-copy" rows="12" id="results" name="phrases"></textarea>
+                        <span id="total-results" class="pull-right"></span>
+                        <div class="clearfix"></div>
+            </div>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="maxLength" name="max" placeholder="Minimum group length" />
+                        <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#ExcludeModal">
+                            Стоп слова
+                        </button>
+                        <br />
+                        <button type="button" class="btn btn-info btn-block js-process-btn" >Process Keywords</button>
+                    </div>
+                    <div class="clearfix"></div>
+                                    
+                    <!-- Modal -->
+                    <div id="ExcludeModal" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                        
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Стоп слова</h4>
+                            </div>
+                            <div class="modal-body">
+                                <textarea class="form-control" name="excluded" id="excluded"></textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default js-exclude-btn">
+                                    Применить
+                                </button>
+                            </div>
+                        </div>
+                        
+                        </div>
+                    </div>
+                    <!-- Modal End -->
+
+                </form>
+                <div id="groups" class="col-sm-12 center">
+                    <div class="progress" id="keyword-progress">
+                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+
+                        </div>
+                        <div class="progressMessage"></div>
+                    </div>
+                    <div class="col-sm-12" id="process-result-list">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#menu1" id="list1"></a></li>
+                            <li><a data-toggle="tab" href="#menu2" id="list2"></a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="menu1" class="tab-pane fade in active">
+                                <p class="alert alert-success text-center" id="processed">
+                                    <span class="success-process-keywords"><b>0</b> keywords analyzed</span>
+                                    <span id="success-process-groups"><b>0</b> Groups created</span>
+                                </p>
+                                <ul class="list-group"></ul>
+                            </div>
+                            <div id="menu2" class="tab-pane fade">
+                                <p class="alert alert-success text-center" id="processedLess">
+                                    <span class="success-process-keywords"><b>0</b> keywords analyzed</span>
+                                    <span id="success-process-groupsL"><b>0</b> Groups created</span>
+                                </p>
+                                <ul class="list-group"></ul>
+                            </div>
+                        </div>
+                        
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            </html>
+    
+
+        <script src="{{ site.baseurl }}/assets/js/jquery.min.js"></script>
+        <script src="{{ site.baseurl }}/assets/js/bootstrap.min.js"></script>
+        <script src="{{ site.baseurl }}/assets/js/stop.js"></script>
+        <script src="{{ site.baseurl }}/assets/js/app.js"></script>
+        <script type="text/javascript"> _tck(); </script>
+    <style>
+        textarea.form-control {
+            height: auto;
+            background-color: #424242;
+            border-radius: 0px;
+            border: 0px solid #ccc;
+            color: white;
+        }
+        
+        .modal {
+            position: fixed;
+            top: 30%;
+            right: 30%;
+            bottom: 0;
+            left: 10%;
+            z-index: 1050;
+            display: none;
+            overflow: hidden;
+            -webkit-overflow-scrolling: touch;
+            outline: 0;
+            width: 80%;
+        }
+        .modal-backdrop {
+            position: relative;
+        }
+        .btn {
+            color: #000;
+            border-radius: none;
+            text-decoration: none;
+            transition: color .3s ease-out;
+            width: 98%;
+            text-align: justify;
+            padding-left: 10px;
+            padding-right: 7px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            display: inline-block;
+            border-top-left-radius: 9%;
+            border-bottom-right-radius: 15%;
+            color: white;
+            text-align: center;
+            font-family: Helvetica, Arial, sans-serif;
+            font-weight: bold;
+            font-style: italic;
+            background: #1CAAF2;
+            padding: 7px 7px;
+            text-decoration: none;
+            margin: auto;
+            border: 0px solid transparent;
+            border-width: 2px;
+            border-style: outset;
+            border-color: buttonface;
+            border-image: initial;
+            text-indent: 0px;
+            text-shadow: none;
+
+        .alert-success {
+            color: #eee;
+            background-color: #424242;
+            border-color: #d6e9c6;
+        }
+
+        .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+            color: white;
+            cursor: default;
+            background-color: #0F5880;
+            border: 0px;
+            border-bottom-color: transparent;
+        }
+        p#processed.alert.alert-success.text-center {
+        color: white;
+        background-color: #424242;
+        border-color: #d6e9c6;
+        }
+
+        }
+        .list-group-item {
+            position: static;
+            display: inline-block;
+            padding: 10px 15px;
+            margin-bottom: -1px;
+            background-color: #424242;
+            border: none;
+        }
+        .list-group-item:first-child {
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+        }
+        .mdl-layout__content {
+            background-color: #424242;
+        }
+        .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+            color: white;
+            cursor: default;
+            background-color: #0F5880;
+            border: 0px;
+            border-bottom-color: transparent;
+    }
+
+        .progress {
+            height: 20px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            background-color: #0F5880;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 2px #0F5880;
+            box-shadow: inset 0 1px 2px #0F5880;
+        }
+
+        .alert-success {
+            color: #eee;
+            background-color: #0F5880;
+            border-color: #eee;
+        }
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 0px solid transparent;
+            border-radius: 4px;
+        }
+
+        .text-center {
+            text-align: right;
+        }
+        a#exportAsCsv, a#list2{
+            color: rgb(209, 106, 117);
+        }
+        input#maxLength.form-control{
+            color: white;
+            background-color: #424242;
+            border-radius: 0px;
+            transition: none;
+            width: 98%;
+        }
+
+                </style>
+
+</div>
+
+</div>
+
+<div id="Filter" class="tabcontent">
+  <h3>Фильтратор</h3>
+  <p>Who we are and what we do.</p>
+
+  <!DOCTYPE html>
+  <html lang="en">
+  
+  <!-- Mirrored from marketbold.com/KeywordFilterPro/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 20 Oct 2019 00:31:47 GMT -->
+  <head>
+      <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+      <link rel="stylesheet" href="{{ site.baseurl }}/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="{{ site.baseurl }}/css/style.css" />
+  
+      <meta name="description" content="Keyword Filter Pro will filter a large list of keywords and help you target just the best keywords that represent buyers.">
+    </head>
+    <body>
+      <div class="container-fluid content-list">
+          <div class="col-lg-12">
+              <div id="PPC_MATCH_APP" class="row">
+                  <div class="col-md-4" id="inputsContainer">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <label>
+                                  Positive Match
+                                      <a href="#" title="">
+                                          <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                                          <!-- TOOLTIP --->
+                                          <span class="tooltip" style=""><strong>keyword</strong> = Broad Match<br /><strong>"keyword"</strong> = Phrase Match<br /><strong>[keyword]</strong> = Exact Match</span>
+                                      </a>
+                                 
+                                  <textarea class="form-control live-keys" rows="10" id="keysToMatch"></textarea>
+                              </label>
+
+                              <label>
+                                  Negative Match
+                                      <a href="#" title="">
+                                          <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                                          <!-- TOOLTIP --->
+                                          <span class="tooltip" style=""><strong>keyword</strong> = Negative Broad Match<br /><strong>"keyword"</strong> = Negative Phrase Match<br /><strong>[keyword]</strong> = Negative Exact Match</span>
+                                      </a>
+                                  
+                                  <textarea class="form-control live-keys" rows="10" id="keysToFilterMatch"></textarea>
+                              </label>
+                          </div>
+                          
+                          <div class="clearfix"></div>
+                      </div>
+                      <label>
+                          <span>Keyword List
+                              <a href="#" title="">
+                                  <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                                  <!-- TOOLTIP --->
+                                  <span class="tooltip" style="">This is where you paste your entire list of keywords that you want to filter.</span>
+                              </a>
+                          </span>
+                          <textarea class="form-control live-keys" rows="20" id="keysToBeMatched"></textarea>
+                          <div class="pull-right" id="keysToBeMatchedCount"><span>0</span> keywords</div>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-md-6" id="resultsContainer">
+                      <label>
+                          <textarea class="form-control" rows="15" id="matchResult"></textarea>
+                          <span class="pull-right"><span>0</span> keywords match</span>
+                      </label>
+                      <label>
+                          <textarea class="form-control" rows="15" id="dontMatchResult"></textarea>
+                          <span class="pull-right"><span>0</span> keywords don't match</span>
+                      </label>
+                  </div>
+                  <div class="clearfix"></div>
+              </div>
+          </div>
+          <div class="clearfix"></div>
+      </div><br />
+  
+  
+      </div>
+    </body>
+      <script type="text/javascript" src="{{ site.baseurl }}/assets/js/jquery.min.js"></script>
+      <script type="text/javascript" src="{{ site.baseurl }}/assets/js/script.js"></script>
+  
+
+  <script type="text/javascript">
+  _tck();
+  
+  
+  
+  <script type="text/javascript">
+    var _dcq = _dcq || [];
+    var _dcs = _dcs || {};
+    _dcs.account = '1465184';
+  
+    (function() {
+      var dc = document.createElement('script');
+      dc.type = 'text/javascript'; dc.async = true;
+      dc.src = '../../tag.getdrip.com/1465184.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(dc, s);
+    })();
+  </script>
+    </body>
+  </html>
+
+<style>
+    textarea#keysToMatch.form-control.live-keys {
+        height: auto;
+    background-color: #424242;
+    border-radius: 0px;
+    border: 0px solid #ccc;
+    color: white;
+    }
+    .col-md-6 {
+    width: 90em;
+    }
+    #keysToMatch, #keysToFilterMatch, #matchResult {
+        width: 100%;
+    }
+    #resultsContainer {
+        margin-left: 15px;
+    }
+
+@media (min-width: 992px)
+.col-md-6 {
+    width: 50%;
+    width: 69em;
+}
+
+
+textarea#keysToMatch.form-control.live-keys {
+        height: auto;
+    background-color: #424242;
+    border-radius: 0px;
+    border: 0px solid #ccc;
+    color: white;
+    }
+
+    #keysToBeMatched {
+        width: 52.4em;
+    height: 16em;
+    background-color: #03a9f4;
+    }
+    body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial;
+    background-color: #03a9f4;
+}
+#matchResult{
+    margin-left: -1.098em;
+    width: 98%;
+}
+#dontMatchResult {
+    margin-left: -1.088rem;
+    width: 100%;
+}
+        </style>
+
+</div>
+
+<script>
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("dedup").click();
+</script>
+
+</body>
+
+</html> 
+
+
+
+
+
+<script>
+    var removeDuplicates = document.getElementById("remove-duplicates");
+    var selectAllText = document.getElementById("select-all");
+    var clearAllText = document.getElementById("clear-all");
+    var textArea = document.getElementById("duplicate-textarea");
+    var loadText = document.getElementById("load-text");
+    var loadFileText = document.getElementById("load-file");
+    var saveFile = document.getElementById("save-file");
+    var totalRemovedText = document.getElementById("total-removed");
+
+// Remove Duplicate Lines
+removeDuplicates.addEventListener("click", function () {
+    var data = textArea.value.split(/\r?\n/);
+    var removeEmpty = document.getElementById("remove-empty").checked;
+    var caseSensitive = document.getElementById("case-sensitive").checked;
+    var totalRemoved = 0;
+    var totalEmptyRemoved = 0;
+
+    var seen = {};
+    var result = [];
+    var len = data.length;
+    var j = 0;
+    var item;
+
+    if (removeEmpty == false && caseSensitive == false) {
+        for(let i = 0; i < len; i++) {
+            item = data[i];
+            itemCase = item.toUpperCase();
+            if (item == "") {
+                result[j++] = item;
+            } else if (seen[itemCase] != 1) {
+                    seen[itemCase] = 1;
+                    result[j++] = item;
+                }
+        }
+    };
+    
+    if (removeEmpty == true) {
+    var cleaned = data.filter(n => n);
+    len = cleaned.length;
+    totalEmptyRemoved = data.length - cleaned.length;
+        for(let i = 0; i < len; i++) {
+            item = cleaned[i];
+            if (seen[item] != 1) {
+                seen[item] = 1;
+                result[j++] = item;
+            }
+        }      
+    };
+    
+    if (removeEmpty == false && caseSensitive == true) {
+        for(let i = 0; i < len; i++) {
+            item = data[i];
+            if (item == "") { 
+                result[j++] = item;
+            } else if (seen[item] != 1) {
+                seen[item] = 1;
+                result[j++] = item;
+            }
+        }
+    };
+
+    // Write Results
+    textArea.value = result.join('\n');
+
+    // Write Output Stats
+    if (removeEmpty == true && totalEmptyRemoved > 0) {
+        totalRemoved = (data.length - result.length) - totalEmptyRemoved;
+        totalRemovedText.innerHTML = "Удалено <strong>" + totalRemoved + "</strong> дупликатов. Пустых строк удалено <strong>" + totalEmptyRemoved + "</strong>.";     
+    } else {
+        totalRemoved = data.length - result.length; 
+        totalRemovedText.innerHTML = "Всего удалено <strong>" + totalRemoved + "</strong> дупликатов.";
+    }
+
+});
+
+// Select TextArea Content
+    selectAllText.addEventListener("click", function () {
+        textArea.select();
+    });
+
+// Clear TextArea
+clearAllText.addEventListener("click", function () {
+    textArea.value = "";
+    });
+
+// Loading Text Files
+loadText.addEventListener("click", function () {
+    loadFileText.click();
+    });
+
+loadFileText.addEventListener("change", function () {
+    var file = loadFileText.files[0];
+
+    if (file.type.match(/text.*/)) {
+        var reader = new FileReader();
+        reader.readAsText(file);
+        
+        reader.onload = function () {
+            textArea.value = reader.result;
+        }
+        
+    } else {
+        textArea.value = "File Not Support! Please use a TXT file.";
+    }
+});
+
+// Save Results
+saveFile.addEventListener("click", function () {
+    var textToSaveAsBlob = new Blob([textArea.value], { type: "text/plain" });
+    var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+    var fileNameToSaveAs = document.getElementById("save-filename").value + ".txt";
+    var downloadLink = document.createElement("a");
+    
+    downloadLink.download = fileNameToSaveAs;
+    downloadLink.href = textToSaveAsURL;
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+});
+</script>
+
+
+<style>
+
+        form.spinner            {
+            border: 0px solid black;
+            border-radius:8px;
+            box-shadow:none;
+            padding:0.5em 0.75em;
+            background-color: none;
+            overflow:auto;
+        }
+        form.spinner   label    {
+            font-size:1.5em;
+            font-weight:bold;
+            font-family:sans;
+            color:white;
+            text-shadow: 1px 1px 0px black, 0px 0px 2px darkgrey;
+        } 
+        form.spinner   button    {
+            color: #000;
+    text-decoration: none;
+    transition: color .3s ease-out;
+    width: 30%;
+    text-align: justify;
+    padding-left: 10px;
+    padding-right: 7px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: inline-block;
+    border-top-left-radius: 9%;
+    border-bottom-right-radius: 15%;
+    color: white;
+    text-align: center;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    background: #1CAAF2;
+    padding: 7px 7px;
+    text-decoration: none;
+    margin: auto;
+        }
+        form.spinner   button:hover    {
+            background-color: #ED9C95;
+        }
+        form.spinner > *        {
+            width:100%;
+            display:block;
+            box-sizing:border-box;
+        }
+        form.spinner > *:not(:last-child)        {
+            margin-bottom:8px;
+        }
+        form.spinner   textarea {
+            resize:vertical;
+            height:180px;
+            border:1px solid;
+            border-radius:0px;
+            color:black;
+        } 
+        form.spinner   textarea#spintax_input  { color: white; }
+        form.spinner   textarea#spintax_output { font-family:sans; }
+        textarea {
+        background-color: #424242;
+        color: white;
+        }
+        form.spinner textarea {
+        resize: vertical;
+        height: 180px;
+        border: 0px solid;
+        color: #e0e0e0;
+        }
+        button:hover {
+    color: #1CAAF2;
+    background-color: rgb(209, 106, 117);}
+     
+        </style>
+<script>
+// @param   -- spintax. Required. String. A string of text marked up with spintax. 
+// @example -- run_spintax("{What is|what's} the deal with {airline food|the food they give you on airplanes}?")
+    function run_spintax(spintax) { 
+// Define a variable to store a REGEX that will match all spintax instances  
+    var regex = new RegExp(/{([^{}]+?)}/);
+// Loop through all spintax instances  
+    while((to_spin = regex.exec(spintax)) !== null) 
+{ 
+// Break the current spintax match from a string into an array split on the pipe character
+    opts = to_spin[1].split("|"); 
+// Get a random option from the spintax options
+    random = Math.floor(Math.random() * opts.length); 
+// Replace the full spintax string with the chosen option 
+    spintax = spintax.replace(to_spin[0], opts[random]); 
+}
+    return spintax;
+}
+
+    
+    function spin_form() {
+	var t = document.getElementById("spintax_input").value;
+    var t = run_spintax(t);
+    document.getElementById("spintax_output").value = t;
+
+}
+
+</script>        
+
+{% include back-button.html %}
+
+
+
+
+
+
+
+
+
+
