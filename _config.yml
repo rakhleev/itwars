@@ -1,0 +1,23 @@
+# Site settings
+title: itwars.me
+email: your-email@domain.com
+description: Мой блог
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://itwars.me" # the base hostname & protocol for your site
+copyright: '&copy; 2019 itwars.me'
+permalink: /:categories/:title/
+permalink: pretty
+
+# Build settings
+markdown: kramdown
+
+# Custom theme could be generated at: https://getmdl.io/customize/index.html
+material_theme: light_blue-indigo
+
+# Google Analytics account ID (UA-XXXXXXXX-X)
+
+google-analytics-ua: UA-150918278-1
+
+extlinks:
+   attributes: {rel: nofollow, target: _blank}
+   rel_exclude: ['host1.com', 'host2.net']
