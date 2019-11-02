@@ -145,6 +145,69 @@ input {
 }
 .mdl-mini-footer--left-section, .mdl-mini-footer__left-section
 {display: none;}
+@charset "utf-8";
+/* CSS Document */
+body {
+	background-color: #eeeeee;
+}
+#progress,
+#keyword-progress{
+	position:relative;	
+}
+.progressMessage{
+	position: absolute;
+    text-align: center;
+    width: 100%;
+}
+img {
+    display: block;
+    margin: auto;
+	padding-right:200px;
+	margin-top:-15px;
+}
+.center { 
+	float: none; 
+	margin-left: auto; 
+	margin-right: auto; 
+}
+div.main>div.center{
+	max-width:1080px;	
+}
+div.result-phrases{
+	height:300px;
+	overflow-x:auto;
+}
+button.copy-result-btn{
+	margin-top:5px;
+}
+div.modal textarea{
+	min-height:300px;	
+}
+div.footer{
+	margin-right:200px;	
+}
+div#groups{
+	margin-top:35px;	
+}
+div.main{
+	margin:30px auto;	
+}
+div#groups li.list-group-item{
+	padding-right:0;	
+}
+#maxLength{
+	margin:5px 0;	
+}
+#process-result-list p.alert{
+	margin: 10px 0;	
+}
+div#keyword-progress,
+div#process-result-list{
+	display:none;	
+}
+div#process-result-list{
+	padding:0;	
+}
 </style>
 
 <html>
@@ -216,7 +279,7 @@ input {
                             Стоп слова
                         </button>
                         <br />
-                        <button type="button" class="btn btn-info btn-block js-process-btn" >Process Keywords</button>
+                        <button type="button" class="btn btn-info btn-block js-process-btn" >Начать группировку</button>
                     </div>
                     <div class="clearfix"></div>
                                     
@@ -267,7 +330,7 @@ input {
                             </div>
                             <div id="menu2" class="tab-pane fade">
                                 <p class="alert alert-success text-center" id="processedLess">
-                                    <span class="success-process-keywords"><b>0</b> kключевых слов проанализировано</span>
+                                    <span class="success-process-keywords"><b>0</b> ключевых слов проанализировано</span>
                                     <span id="success-process-groupsL"><b>0</b> групп создано</span>
                                 </p>
                                 <ul class="list-group"></ul>
@@ -287,6 +350,24 @@ input {
         <script src="{{ site.baseurl }}/assets/js/app.js"></script>
         <script type="text/javascript"> _tck(); </script>
     <style>
+
+div#groups li.list-group-item {
+    padding-right: 0;
+}
+
+.list-group-item:first-child {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+        .list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    width: -webkit-fill-available;
+}
         textarea.form-control {
             height: auto;
             background-color: #424242;
@@ -419,6 +500,10 @@ input {
             border-radius: 0px;
             transition: none;
             width: 98%;
+        }
+        #process-result-list > ul {
+
+            visibility:hidden;
         }
 
                 </style>

@@ -1,9 +1,4 @@
-/*!
- * KeywordGrouper Pro (http://marketbold.com/KeywordGrouperPro/)
- * Copyright 2005-2017 MarketBold.com
- */
-
-//$(document).ready(function() {
+$(document).ready(function() {
 
     var App = {
 
@@ -81,14 +76,14 @@
 				App.$phraseBar.width(0);
 
 				//Generate clean keywords
-				App.$keywordMessage.text( "Cleaning Keywords..." );
+				App.$keywordMessage.text( "Чистка ключевых слов..." );
 				stopWords = App.$excludedText.val().split("\n");
 				App.generateCleanKeywords();
 
 				//console.log(App.gnrtdKeywords);
 				App.generated = App.gnrtdKeywords;
 				// Expand keywords and remove duplicates
-				App.$keywordMessage.text( "Expanding Keywords..." );
+				App.$keywordMessage.text( "Расширение ключевых слов..." );
 				setTimeout(function(){ // add a delay so that script won't crash
 					App.expandKeywordsNoDuplicates();
 
@@ -100,7 +95,7 @@
 						return b.count - a.count;
 					});
 
-					App.$keywordMessage.text( "Preparing Keywords..." );
+					App.$keywordMessage.text( "Подготовка ключевых слов..." );
 
 					// start the matching
 					setTimeout(function(){ // add a delay so that script won't crash
@@ -210,7 +205,7 @@
 				keyword = expanded[ eindex ];
 				// progress bar width
 				width = ( ( (eindex + 1 + (chunkindex*App.chunkedCount) ) / App.expandedKeywords.length) * 100 );
-				App.$keywordMessage.text( (eindex + 1 + (chunkindex*App.chunkedCount) ) + ' keywords analyzed of ' + App.expandedKeywords.length);
+				App.$keywordMessage.text( (eindex + 1 + (chunkindex*App.chunkedCount) ) + ' ключевых слов проанализировано из ' + App.expandedKeywords.length);
 				App.$phraseBar.width( width + '%' );
 
 				// we start always on a blank phrase list and clean word
@@ -326,10 +321,10 @@
 			}else{
 
 				// titles and success messages on each tabs
-				App.$succProcessKWord.html('<b>'+App.expandedKeywords.length+'</b> keywords analyzed');
-				App.$succProcessGrp.html('<b>'+App.HighCount+'</b> Groups created <b>'+App.$maxLength.val()+'</b> or more ' +
-					' <a id="exportAsCsv">Export to .csv</a>');
-				App.$succProcessGrpL.html('<b>'+App.LowCount+'</b> Keywords less than <b>'+App.$maxLength.val()+'</b>');
+				App.$succProcessKWord.html('<b>'+App.expandedKeywords.length+'</b> ключевых слов проанализировано');
+				App.$succProcessGrp.html('<b>'+App.HighCount+'</b> групп создано с уровнем совпадения от <b>'+App.$maxLength.val()+'</b> слов ' +
+					' <a id="exportAsCsv">Экспорт в .csv</a>');
+				App.$succProcessGrpL.html('<b>'+App.LowCount+'</b> групп создано, точность - <b>'+App.$maxLength.val()+'</b>');
 
 				// set the html from the generated HTML for each higher and lower group HTMLs
 				App.$groupUL.html( App.HigherHTML );
@@ -338,13 +333,13 @@
 						'<div>' +
 							App.LowerHTML +
 						'</div>' +
-						'<button class="btn btn-success copy-result-btn">Copy</button>' +
+						'<button class="btn btn-success copy-result-btn">Скопировать</button>' +
 					'</li>'
 				);
 
 				// Set texts on the tabs
-				$('#list1').html(App.$maxLength.val()+' or more');
-				$('#list2').html('less than '+App.$maxLength.val());
+				$('#list1').html(App.$maxLength.val()+' слов');
+				$('#list2').html('менее чем '+App.$maxLength.val());
 
 				//show the results list
 				$('#process-result-list').show();
@@ -370,7 +365,7 @@
 				App.csvArray.push(["",obj.phrases[x]]);
 			}
 			App.HigherHTML += '</div>';
-			App.HigherHTML += '<button class="btn btn-success copy-result-btn">Copy</button>';
+			App.HigherHTML += '<button class="btn btn-success copy-result-btn">Скопировать</button>';
 			App.HigherHTML += '</li>';
 
 		},
@@ -398,9 +393,9 @@
 			// send items to the clipboad
 			App.sendToClipboard(str);
 			// restarts all copy to clipboard button to the default.
-			$('button.copy-result-btn').text("Copy");
+			$('button.copy-result-btn').text("Скопировать");
 			// Change the text of the clicked button
-			btn.text('Copy');
+			btn.text('Скопировать');
 		},
 
 		// Exclude button.  Just close the modal. no process needed
@@ -554,4 +549,4 @@
 
     App.init();
 
-//});
+});
