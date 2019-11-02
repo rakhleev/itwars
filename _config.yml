@@ -3,7 +3,7 @@ title: itwars.me
 email: your-email@domain.com
 description: Мой блог
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://itwars.me" # the base hostname & protocol for your site
+url: "https://itwars.me" # the base hostname & protocol for your site
 copyright: '&copy; 2019 itwars.me'
 permalink: /:categories/:title/
 permalink: pretty
