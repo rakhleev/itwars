@@ -1,0 +1,30 @@
+<hr>
+<footer class="mdl-mini-footer">
+    <div class="mdl-mini-footer__left-section">
+        <p>
+            {{ site.description }}
+        </p>
+        <ul class="mdl-mini-footer__link-list">
+            <li>
+                <a href="{{ site.baseurl }}/">Главная</a>
+            </li>
+            {% for page in site.pages %}
+            {% if page.title %}
+            <li>
+                    {% unless page.exclude %}
+                <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+                {% endunless %}
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+        <div class="copyright">
+            {{ site.copyright }} 
+        </div>
+       
+    </div>
+    <div class="mdl-mini-footer__right-section"> <div class="Telegram">
+            <button id="Telegram">Telegram</button>
+        </div>
+</div>
+</footer>
