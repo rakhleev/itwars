@@ -11,7 +11,7 @@ title: Codedump
         function postcode() {
           var client = new WebTorrent();
           var file = new File([document.all('send').value], document.all('name').value);
-          client.seed(file, function(torrent){ document.all('deliver').innerHTML = 'Link to posted file:\nhttps://itwars.me/?' + torrent.infoHash });
+          client.seed(file, function(torrent){ document.all('deliver').innerHTML = 'Link to posted file:\nhttps://itwars.me/codedump/?' + torrent.infoHash });
         }
          function loaddoc(){
       var query = window.location.search.slice(1);
