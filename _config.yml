@@ -1,10 +1,10 @@
 # Site settings
 title: itwars.me
-email: your-email@domain.com
-description: Мой блог
+email:
+description:
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://itwars.me" # the base hostname & protocol for your site
-copyright: '&copy; 2019 itwars.me'
+copyright: <p class="copy-left">&copy;</p> 2019 itwars.me
 permalink: /:categories/:title/
 permalink: pretty
 
