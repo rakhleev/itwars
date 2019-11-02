@@ -7,6 +7,7 @@ url: "https://itwars.me" # the base hostname & protocol for your site
 copyright: <p class="copy-left">&copy;</p> 2019 <a href="https://itwars.me/">itwars.me</a>
 permalink: /:categories/:title/
 permalink: pretty
+github: [metadata]
 
 # Build settings
 markdown: kramdown
