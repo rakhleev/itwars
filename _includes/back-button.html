@@ -1,0 +1,65 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<button class="button button2" onclick="goBack()">🡄 Назад</button>
+<meta name="viewport" content="width=320, initial-scale=0.8">
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+
+<button class="button button2" id="flip">🡅 Все посты</button>
+<script> 
+    $(document).ready(function(){
+      $("#flip").click(function(){
+        $("#panel").slideToggle("fast");
+      });
+    });
+    </script>
+
+
+
+
+<style>
+
+    
+    
+.button {
+  background-color: #A5459D;
+  border: none;
+  color: #5095EA;
+  padding: 0.6em 0.8em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.3em;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 5px 20px 5px;
+  margin-bottom: 1.3em;
+}
+.button2 {
+  background-color: #5095EA; 
+  color: white; 
+  border: 0.3em inset rgba(170, 0, 23, 0.418);
+  width: 9em;
+}
+
+.button2:hover {
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  background-color: #A5459D;
+  color: white;
+  font-size: 1.3em;
+}
+
+.button#flip {
+    float: right;
+    border-radius: 20px 5px 20px;
+
+}
+
+</style>
+
+<div id="panel" style="display:none;"> {% include categories.html %} </div>
